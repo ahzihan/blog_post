@@ -12,7 +12,7 @@
     <section>
         @include('inc.navbar')
     </section>
-    <section>
+    <section class="container">
         @yield('content')
     </section>
     <section>

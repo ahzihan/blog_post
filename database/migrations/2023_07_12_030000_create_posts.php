@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('cat_id');
+            // $table->unsignedBigInteger('user_id');
+            // $table->unsignedBigInteger('cat_id');
             $table->string('title',200);
-            $table->text('comments');
+            $table->text('details');
 
-            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->cascadeOnUpdate();
+            // $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete()->cascadeOnUpdate();
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

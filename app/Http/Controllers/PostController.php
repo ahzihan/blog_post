@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,15 +12,19 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+
+        $posts=Post::orderBy('created_at','desc')->get();
+        return view('pages.home',compact('posts'));
+
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('pages.add_post');
     }
 
     /**
@@ -27,7 +32,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required | max:255',
+            'details'=>'required',
+        ]);
+
+        // $file=$request->file('photo');
+        // $photo=time().'_'.$file->getClientOriginalName();
+        // $file->move('uploads',$photo);
+        $d=array(
+            'title'=>$request->title,
+            'details'=>$request->details,
+        );
+        Post::create($d);
+        return redirect()->route('home')->with('success','Post Inserted Successfully!');
     }
 
     /**
@@ -35,7 +53,9 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        $list=Post::find($id);
+        return view('pages.details',compact('list'));
     }
 
     /**

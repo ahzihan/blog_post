@@ -14,5 +14,9 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class,'index']);
+Route::get('/', [PostController::class,'index'])->name('home');
+Route::get('/details/{id}', [PostController::class, 'show'])->name('details');
+Route::get('/create', [PostController::class, 'create'])->name('create');
+Route::post('/insert', [PostController::class, 'store'])->name('store');
+
 

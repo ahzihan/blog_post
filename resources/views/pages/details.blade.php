@@ -1,8 +1,8 @@
 @extends('app')
 @section('page-title')
-    Add New Post
+    Single-Post
 @endsection
 
 @section('content')
-    @include('components.add_new_post')
+    @include('components.single')
 @endsection

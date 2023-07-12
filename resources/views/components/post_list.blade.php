@@ -1,3 +1,4 @@
+<h3>Post List</h3>
 <table class="table">
   <thead class="table-dark">
     <tr>
@@ -8,11 +9,18 @@
     </tr>
   </thead>
   <tbody>
+    @php
+        $sl=1;
+    @endphp
+    @forelse($posts as $n)
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{ $sl++ }}</td>
+        <td>{{ $n->title }}</td>
+        <td>{{ $n->details }}</td>
+        <td>
+            <a class="btn btn-sm btn-primary" href="{{url('/details/'.$n->id)}}">Read More</a>
+        </td>
     </tr>
+    @endforeach
   </tbody>
 </table>
