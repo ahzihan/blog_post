@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,7 @@ Route::get('/', [PostController::class,'index'])->name('home');
 Route::get('/details/{id}', [PostController::class, 'show'])->name('details');
 Route::get('/create', [PostController::class, 'create'])->name('create');
 Route::post('/insert', [PostController::class, 'store'])->name('store');
+Route::post('/comment', [CommentController::class, 'store'])->name('store_comment');
+Route::get('/comment/{post_id}', [CommentController::class, 'show'])->name('show_comment');
 
 
